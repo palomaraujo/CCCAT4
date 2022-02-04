@@ -39,3 +39,21 @@ test("Deve fazer um pedido com calculo de frete", async function(){
     const output = await placeOrder.execute(input);
     expect(output.total).toBe(6350);
 })
+
+test("Deve fazer um pedido com código'", async function(){
+    const itemRepository = new ItemRepositoryMemory();
+    const couponRepository = new CouponRepositoryMemory();
+    const orderRepository = new OrderRepositoryMemory();
+    const placeOrder = new PlaceOrder(itemRepository, orderRepository, couponRepository );
+    const input = {
+        cpf: "839.435.452-10",
+        orderItems: [
+            { idItem: 4, quantity: 1},
+            { idItem: 5, quantity: 1},
+            { idItem: 6, quantity: 3}
+        ],
+        date: new Date("2021-12-10"),
+    }
+    const output = await placeOrder.execute(input);
+    expect(output.code).toBe("202100000001");
+})

@@ -1,5 +1,5 @@
 export default class PlaceOrderOutput{
-    constructor(readonly total: number){
+    constructor(readonly code: string, readonly total: number){
         
     }
 }
