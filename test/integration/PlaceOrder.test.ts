@@ -11,7 +11,7 @@ let placeOrder: PlaceOrder;
 let orderRepository: OrderRepositoryDatabase;
 
 beforeEach(function () {
-    const connection = new PgPromiseConnectionAdapter();
+    const connection = PgPromiseConnectionAdapter.getInstance();
     const itemRepository = new ItemRepositoryDatabase(connection);
     const couponRepository = new CouponRepositoryDatabase(connection);
     orderRepository = new OrderRepositoryDatabase(connection);
