@@ -40,6 +40,14 @@ export default class Order {
 		 return this.code.value;
 	}
 
+	getCpf(){
+		return this.cpf.value;
+	}
+
+	getOrderItems(){
+		return this.orderItens;
+	}
+
 	getTotal (){
 		let total = 0;
 		for (const orderItem of this.orderItens){
